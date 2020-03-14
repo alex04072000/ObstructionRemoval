@@ -34,6 +34,11 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 CUDA_VISIBLEDEVICES=0 python3 run_reflection.py
 ```
 
+* Run your own sequence (fence removal):
+``` bash
+CUDA_VISIBLEDEVICES=0 python3 test_fence.py
+```
+
 ## Citation
 ```
 [1]  @inproceedings{liu2019cyclicgen,
