@@ -818,9 +818,9 @@ def train():
         saver2.restore(sess, nn_opts['ckpt_path'])
         saver4 = tf.train.Saver(var_list=[v for v in tf.all_variables() if
                                           "FeaturePyramidExtractor" in v.name or "TranslationEstimator" in v.name])
-        saver4.restore(sess, 'train_dir_Decomposition_reflection_HomographyDA_Translation_cheat/model.ckpt-100000')
+        saver4.restore(sess, 'ckpt_decomposition_reflection/model.ckpt')
         saver5 = tf.train.Saver(var_list=[v for v in tf.all_variables() if "FusionLayer_" in v.name])
-        saver5.restore(sess, 'train_dir_chain_reflection_cheat_important_stopGrad_adjust_resize_alphaFmask_onlyB2_L1Gradient/model.ckpt-100000')
+        saver5.restore(sess, 'ckpt_reconstruction_reflection/model.ckpt')
 
         # Summary Writter
         summary_writer = tf.summary.FileWriter(

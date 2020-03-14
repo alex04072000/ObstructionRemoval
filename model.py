@@ -215,6 +215,142 @@ class ImageReconstruction_reflection(object):
 
         return F0_pred, F1_pred, F2_pred, F3_pred, F4_pred, B0_pred, B1_pred, B2_pred, B3_pred, B4_pred
 
+class ImageReconstruction_chain_obstruction_1029(object):
+    def __init__(self, batch_size, CROP_PATCH_H, CROP_PATCH_W, level=4, weighted_fusion=True):
+        self.batch_size = batch_size
+        self.CROP_PATCH_H = CROP_PATCH_H
+        self.CROP_PATCH_W = CROP_PATCH_W
+        self.level = level
+        self.weighted_fusion = weighted_fusion
+
+    def down(self, x, outChannels, filterSize):
+        x = tf.layers.average_pooling2d(x, 2, 2)
+        x = tf.nn.leaky_relu(tf.layers.conv2d(x, outChannels, filterSize, 1, 'same'), 0.1)
+        x = tf.nn.leaky_relu(tf.layers.conv2d(x, outChannels, filterSize, 1, 'same'), 0.1)
+        return x
+
+    def up(self, x, outChannels, skpCn):
+        x = tf.image.resize_bilinear(x, [x.get_shape().as_list()[1] * 2, x.get_shape().as_list()[2] * 2])
+        x = tf.nn.leaky_relu(tf.layers.conv2d(x, outChannels, 3, 1, 'same'), 0.1)
+        x = tf.nn.leaky_relu(tf.layers.conv2d(tf.concat([x, skpCn], -1), outChannels, 3, 1, 'same'), 0.1)
+        return x
+
+    def FusionLayer_B(self, image_2_B, alpha, image_2, image_0, image_1, image_3, image_4,
+                      flow20B, flow21B, flow23B, flow24B, lvl):
+        with tf.variable_scope("FusionLayer_B_" + str(lvl), reuse=tf.AUTO_REUSE):
+        # with tf.variable_scope("FusionLayer_B", reuse=tf.AUTO_REUSE):
+            b, h, w, _ = tf.unstack(tf.shape(image_2))
+
+            # image_2_B = tf.image.resize_bilinear(image_2_B, (h, w))
+
+            registrated_background_20 = self.warp(image_0, flow20B, b, h, w, 3)
+            registrated_background_21 = self.warp(image_1, flow21B, b, h, w, 3)
+            registrated_background_23 = self.warp(image_3, flow23B, b, h, w, 3)
+            registrated_background_24 = self.warp(image_4, flow24B, b, h, w, 3)
+
+            tf.summary.image('registrated_background_20_'+str(lvl), registrated_background_20, 3)
+            tf.summary.image('registrated_background_21_'+str(lvl), registrated_background_21, 3)
+            tf.summary.image('registrated_background_23_'+str(lvl), registrated_background_23, 3)
+            tf.summary.image('registrated_background_24_'+str(lvl), registrated_background_24, 3)
+
+            outgoing_mask_20 = create_outgoing_mask(flow20B)
+            outgoing_mask_21 = create_outgoing_mask(flow21B)
+            outgoing_mask_23 = create_outgoing_mask(flow23B)
+            outgoing_mask_24 = create_outgoing_mask(flow24B)
+
+            diff_20 = tf.abs(image_2_B - registrated_background_20)
+            diff_21 = tf.abs(image_2_B - registrated_background_21)
+            diff_23 = tf.abs(image_2_B - registrated_background_23)
+            diff_24 = tf.abs(image_2_B - registrated_background_24)
+
+            B_registrated = tf.concat([image_2_B, alpha, image_2,
+                                       registrated_background_20, outgoing_mask_20, diff_20,
+                                       registrated_background_21, outgoing_mask_21, diff_21,
+                                       registrated_background_23, outgoing_mask_23, diff_23,
+                                       registrated_background_24, outgoing_mask_24, diff_24], -1)
+
+            x = tf.concat(B_registrated, axis=3)
+            x = tf.layers.Conv2D(128, (3, 3), (1, 1), 'same')(x)
+            x = tf.nn.leaky_relu(x)
+            x = tf.layers.Conv2D(128, (3, 3), (1, 1), 'same')(x)
+            x = tf.nn.leaky_relu(x)
+            x = tf.layers.Conv2D(96, (3, 3), (1, 1), 'same')(x)
+            x = tf.nn.leaky_relu(x)
+            x = tf.layers.Conv2D(64, (3, 3), (1, 1), 'same')(x)
+            x = tf.nn.leaky_relu(x)
+            x = tf.layers.Conv2D(32, (3, 3), (1, 1), 'same')(x)
+            x = tf.nn.leaky_relu(x)
+            if self.weighted_fusion:
+                x = tf.layers.Conv2D(5, (3, 3), (1, 1), 'same')(x)  # 0 1 3 4, alpha
+                weights = tf.nn.softmax(x[..., 0:4], axis=-1)
+                img_diff_0 = registrated_background_20 - image_2_B
+                img_diff_1 = registrated_background_21 - image_2_B
+                img_diff_3 = registrated_background_23 - image_2_B
+                img_diff_4 = registrated_background_24 - image_2_B
+                output_B = image_2_B + (weights[..., 0:1] * img_diff_0 + weights[..., 1:2] * img_diff_1 + weights[..., 2:3] * img_diff_3 + weights[..., 3:4] * img_diff_4)
+                return output_B, alpha + x[..., 4:5]
+            else:
+                x = tf.layers.Conv2D(4, (3, 3), (1, 1), 'same')(x)
+                return image_2_B + x[..., 0:3], alpha + x[..., 3:4]
+
+    def warp(self, I, F, b, h, w, c):
+        return tf.reshape(dense_image_warp(I, tf.stack([-F[..., 1], -F[..., 0]], -1)), [b, h, w, c])
+
+    def _build_model(self, input_images,
+                     B0_last, B1_last, B2_last, B3_last, B4_last,
+                     A0_last, A1_last, A2_last, A3_last, A4_last,
+                     FB01, FB02, FB03, FB04,
+                     FB10, FB12, FB13, FB14,
+                     FB20, FB21, FB23, FB24,
+                     FB30, FB31, FB32, FB34,
+                     FB40, FB41, FB42, FB43):
+
+        b = self.batch_size
+        h = self.CROP_PATCH_H // (2 ** self.level)
+        w = self.CROP_PATCH_W // (2 ** self.level)
+
+        I0 = tf.image.resize_bilinear(input_images[..., 0:3], (h, w))
+        I1 = tf.image.resize_bilinear(input_images[..., 3:6], (h, w))
+        I2 = tf.image.resize_bilinear(input_images[..., 6:9], (h, w))
+        I3 = tf.image.resize_bilinear(input_images[..., 9:12], (h, w))
+        I4 = tf.image.resize_bilinear(input_images[..., 12:15], (h, w))
+
+
+        if self.level == 4:
+            B0_last = (I0 + self.warp(I1, FB01, b, h, w, 3)
+                         + self.warp(I2, FB02, b, h, w, 3) + self.warp(I3, FB03, b, h, w, 3)
+                         + self.warp(I4, FB04, b, h, w, 3))/5.0
+            B1_last = (I1 + self.warp(I0, FB10, b, h, w, 3)
+                         + self.warp(I2, FB12, b, h, w, 3) + self.warp(I3, FB13, b, h, w, 3)
+                         + self.warp(I4, FB14, b, h, w, 3))/5.0
+            B2_last = (I2 + self.warp(I0, FB20, b, h, w, 3)
+                         + self.warp(I1, FB21, b, h, w, 3) + self.warp(I3, FB23, b, h, w, 3)
+                         + self.warp(I4, FB24, b, h, w, 3))/5.0
+            B3_last = (I3 + self.warp(I0, FB30, b, h, w, 3)
+                         + self.warp(I1, FB31, b, h, w, 3) + self.warp(I2, FB32, b, h, w, 3)
+                         + self.warp(I4, FB34, b, h, w, 3))/5.0
+            B4_last = (I4 + self.warp(I0, FB40, b, h, w, 3)
+                         + self.warp(I1, FB41, b, h, w, 3) + self.warp(I2, FB42, b, h, w, 3)
+                         + self.warp(I3, FB43, b, h, w, 3))/5.0
+            # A0_last = 1 - tf.abs(tf.image.rgb_to_grayscale(F0_last) - tf.image.rgb_to_grayscale(I0))
+            # A1_last = 1 - tf.abs(tf.image.rgb_to_grayscale(F1_last) - tf.image.rgb_to_grayscale(I1))
+            # A2_last = 1 - tf.abs(tf.image.rgb_to_grayscale(F2_last) - tf.image.rgb_to_grayscale(I2))
+            # A3_last = 1 - tf.abs(tf.image.rgb_to_grayscale(F3_last) - tf.image.rgb_to_grayscale(I3))
+            # A4_last = 1 - tf.abs(tf.image.rgb_to_grayscale(F4_last) - tf.image.rgb_to_grayscale(I4))
+            A0_last = tf.zeros_like(B0_last[..., 0:1])
+            A1_last = tf.zeros_like(B1_last[..., 0:1])
+            A2_last = tf.zeros_like(B2_last[..., 0:1])
+            A3_last = tf.zeros_like(B3_last[..., 0:1])
+            A4_last = tf.zeros_like(B4_last[..., 0:1])
+
+        B0_pred, A0_pred = self.FusionLayer_B(B0_last, A0_last, I0, I1, I2, I3, I4, FB01, FB02, FB03, FB04, self.level)
+        B1_pred, A1_pred = self.FusionLayer_B(B1_last, A1_last, I1, I0, I2, I3, I4, FB10, FB12, FB13, FB14, self.level)
+        B2_pred, A2_pred = self.FusionLayer_B(B2_last, A2_last, I2, I0, I1, I3, I4, FB20, FB21, FB23, FB24, self.level)
+        B3_pred, A3_pred = self.FusionLayer_B(B3_last, A3_last, I3, I0, I1, I2, I4, FB30, FB31, FB32, FB34, self.level)
+        B4_pred, A4_pred = self.FusionLayer_B(B4_last, A4_last, I4, I0, I1, I2, I3, FB40, FB41, FB42, FB43, self.level)
+
+        return B0_pred, B1_pred, B2_pred, B3_pred, B4_pred, A0_pred, A1_pred, A2_pred, A3_pred, A4_pred
+
 
 class Decomposition_Net_Translation(object):
     def __init__(self, H, W, use_Homography, is_training, use_BN=False):
