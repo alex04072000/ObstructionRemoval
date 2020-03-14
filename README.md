@@ -23,7 +23,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 
 * To download the pre-trained models:
 
-    * [ckpt](https://drive.google.com/open?id=1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE)
+    * [ckpt](https://drive.google.com/open?id=1OUjr1Cj-nHOUEONoqIMnQIL9qTElpE6r)
 
 ## Data Preparation
 * [Deep Voxel Flow (DVF)](https://github.com/liuziwei7/voxel-flow)
