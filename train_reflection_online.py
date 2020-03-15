@@ -98,6 +98,19 @@ def warp(I, F, H, W):
 
 
 def train():
+    """resize training images into 16x"""
+    if not os.path.exists('tmp'):
+        os.makedirs('tmp')
+    def resize_and_save(img_path):
+        original_img = cv2.imread(img_path)
+        NEW_H = int(np.ceil(float(original_img.shape[0]) / 16.0)) * 16
+        NEW_W = int(np.ceil(float(original_img.shape[1]) / 16.0)) * 16
+        new_img = cv2.resize(original_img, dsize=(NEW_W, NEW_H), interpolation=cv2.INTER_CUBIC)
+        new_path = os.path.join('tmp', os.path.split(img_path)[-1])
+        cv2.imwrite(new_path, new_img)
+    for img_path in sorted(glob.glob(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*.png')):
+        resize_and_save(img_path)
+
     with tf.Graph().as_default():
         def get_online_data(path):
             data_list_cheat_F0 = sorted(glob.glob(path))
@@ -118,11 +131,11 @@ def train():
             dataset_cheat_F0 = dataset_cheat_F0.prefetch(16)
             return dataset_cheat_F0
 
-        dataset_online_I0 = get_online_data(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I0.png')
-        dataset_online_I1 = get_online_data(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I1.png')
-        dataset_online_I2 = get_online_data(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I2.png')
-        dataset_online_I3 = get_online_data(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I3.png')
-        dataset_online_I4 = get_online_data(FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I4.png')
+        dataset_online_I0 = get_online_data('tmp/' + FLAGS.training_scene + '*I0.png')
+        dataset_online_I1 = get_online_data('tmp/' + FLAGS.training_scene + '*I1.png')
+        dataset_online_I2 = get_online_data('tmp/' + FLAGS.training_scene + '*I2.png')
+        dataset_online_I3 = get_online_data('tmp/' + FLAGS.training_scene + '*I3.png')
+        dataset_online_I4 = get_online_data('tmp/' + FLAGS.training_scene + '*I4.png')
         batch_online_I0 = dataset_online_I0.batch(FLAGS.batch_size).make_initializable_iterator()
         batch_online_I1 = dataset_online_I1.batch(FLAGS.batch_size).make_initializable_iterator()
         batch_online_I2 = dataset_online_I2.batch(FLAGS.batch_size).make_initializable_iterator()
@@ -133,16 +146,11 @@ def train():
         fused_frame2 = batch_online_I2.get_next()
         fused_frame3 = batch_online_I3.get_next()
         fused_frame4 = batch_online_I4.get_next()
-        dataset_online_I0_large = get_online_data_large(
-            FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I0.png')
-        dataset_online_I1_large = get_online_data_large(
-            FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I1.png')
-        dataset_online_I2_large = get_online_data_large(
-            FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I2.png')
-        dataset_online_I3_large = get_online_data_large(
-            FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I3.png')
-        dataset_online_I4_large = get_online_data_large(
-            FLAGS.training_data_path + '/' + FLAGS.training_scene + '*I4.png')
+        dataset_online_I0_large = get_online_data_large('tmp/' + FLAGS.training_scene + '*I0.png')
+        dataset_online_I1_large = get_online_data_large('tmp/' + FLAGS.training_scene + '*I1.png')
+        dataset_online_I2_large = get_online_data_large('tmp/' + FLAGS.training_scene + '*I2.png')
+        dataset_online_I3_large = get_online_data_large('tmp/' + FLAGS.training_scene + '*I3.png')
+        dataset_online_I4_large = get_online_data_large('tmp/' + FLAGS.training_scene + '*I4.png')
         batch_online_I0_large = dataset_online_I0_large.batch(FLAGS.batch_size).make_initializable_iterator()
         batch_online_I1_large = dataset_online_I1_large.batch(FLAGS.batch_size).make_initializable_iterator()
         batch_online_I2_large = dataset_online_I2_large.batch(FLAGS.batch_size).make_initializable_iterator()

@@ -25,7 +25,7 @@ tf.app.flags.DEFINE_string('ckpt_path', 'temp_online_ckpt/model.ckpt-1000',
                            """before beginning any training.""")
 tf.app.flags.DEFINE_string('output_dir', 'output',
                            """Output folder.""")
-tf.app.flags.DEFINE_string('GPU_ID', '0',
+tf.app.flags.DEFINE_string('GPU_ID', '',
                            """GPU ID""")
 
 GPU_ID = FLAGS.GPU_ID
@@ -39,8 +39,8 @@ nn_opts = deepcopy(_DEFAULT_PWCNET_TEST_OPTIONS)
 nn_opts['verbose'] = True
 nn_opts['ckpt_path'] = 'tfoptflow/tfoptflow/models/pwcnet-lg-6-2-multisteps-chairsthingsmix/pwcnet.ckpt-595000'
 nn_opts['batch_size'] = 1
-nn_opts['gpu_devices'] = ['/device:GPU:' + GPU_ID]
-nn_opts['controller'] = '/device:GPU:' + GPU_ID
+nn_opts['gpu_devices'] = ['/device:CPU:0']
+nn_opts['controller'] = '/device:CPU:0'
 nn_opts['use_dense_cx'] = True
 nn_opts['use_res_cx'] = True
 nn_opts['pyr_lvls'] = 6
