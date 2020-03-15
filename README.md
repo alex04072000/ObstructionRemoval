@@ -21,6 +21,9 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 ## Requirements setup
 * [TensorFlow](https://www.tensorflow.org/)
 
+* [Pre-trained PWC-Net](https://github.com/philferriere/tfoptflow)
+    * Please overwrite tfoptflow/model_pwcnet.py using the one in this repository.
+
 * To download the pre-trained models:
 
     * [ckpt](https://drive.google.com/open?id=1OUjr1Cj-nHOUEONoqIMnQIL9qTElpE6r)
