@@ -1,11 +1,11 @@
 # Learning to See Through Obstructions
-Recovering a high dynamic range (HDR) image from asingle low dynamic range (LDR) input image is challenging due to missing details in under-/over-exposed regions caused by quantization and saturation of camera sensors. In contrast to existing learning-based methods, our core idea is to incorporate the domain knowledge of the LDR image formation pipeline into our model. We model the HDR-to-LDR image formation pipeline as the (1) dynamic range clipping, (2) non-linear mapping from a camera response function, and (3) quantization. We then propose to learn three specialized CNNs to reverse these steps. By decomposing the problem into specific sub-tasks, we impose effective physical constraints to facilitate the training of individual sub-networks. Finally, we jointly fine-tune the entire model end-to-end to reduce error accumulation. With extensive quantitative and qualitative experiments on diverse image datasets, we demonstrate that the proposed method performs favorably against state-of-the-art single-image HDR reconstruction algorithms. The source code, datasets, and pre-trained model are available at our project website.
+We present a learning-based approach for removing unwanted obstructions, such as window reflections, fence occlusions or raindrops, from a short sequence of images captured by a moving camera. Our method leverages the motion differences between the background and the obstructing elements to recover both layers. Specifically, we alternate between estimating dense optical flow fields of the two layers and reconstructing each layer from the flowwarped images via a deep convolutional neural network. The learning-based layer reconstruction allows us to accommodate potential errors in the flow estimation and brittle assumptions such as brightness consistency. We show that training on synthetically generated data transfers well to real images. Our results on numerous challenging scenarios of reflection and fence removal demonstrate the effectiveness of the proposed method.
 
-[[Project]](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/Obstruction)
+[[Project]](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval)
 
 Paper
 
-<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/Obstruction_/.pdf" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
+<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval_/.pdf" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
 
 ## Overview
 This is the author's reference implementation of the multi-image reflection removal using TensorFlow described in:
@@ -44,10 +44,10 @@ CUDA_VISIBLEDEVICES=0 python3 test_fence.py
 
 ## Citation
 ```
-[1]  @inproceedings{liu2019cyclicgen,
-         author = {},
-         title = {},
-         booktitle = {},
-         year = {}
-     }
+[1]  @inproceedings{Liu-Learning-CVPR-2020,
+         author    = {Liu, Yu-Lun and Lai, Wei-Sheng and Yang, Ming-Hsuan and Chuang, Yung-Yu and Huang, Jia-Bin}, 
+         title     = {Learning to See Through Obstructions}, 
+         booktitle = {Conference on Computer Vision and Pattern Recognition},
+         year      = {2020}
+}
 ```
