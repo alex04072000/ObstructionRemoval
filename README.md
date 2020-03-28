@@ -5,7 +5,7 @@ Recovering a high dynamic range (HDR) image from asingle low dynamic range (LDR)
 
 Paper
 
-<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/Obstruction_/.pdf" rel="Paper"><img src="thumb.png" alt="Paper" width="100%"></a>
+<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/Obstruction_/.pdf" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
 
 ## Overview
 This is the author's reference implementation of the multi-image reflection removal using TensorFlow described in:
