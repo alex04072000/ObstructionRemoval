@@ -1,4 +1,4 @@
-# Learning to See Through Obstructions
+# [CVPR 2020] Learning to See Through Obstructions
 We present a learning-based approach for removing unwanted obstructions, such as window reflections, fence occlusions or raindrops, from a short sequence of images captured by a moving camera. Our method leverages the motion differences between the background and the obstructing elements to recover both layers. Specifically, we alternate between estimating dense optical flow fields of the two layers and reconstructing each layer from the flowwarped images via a deep convolutional neural network. The learning-based layer reconstruction allows us to accommodate potential errors in the flow estimation and brittle assumptions such as brightness consistency. We show that training on synthetically generated data transfers well to real images. Our results on numerous challenging scenarios of reflection and fence removal demonstrate the effectiveness of the proposed method.
 
 [[Project]](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval)
