@@ -33,7 +33,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 * [Deep Voxel Flow (DVF)](https://github.com/liuziwei7/voxel-flow)
 
 ## Usage
-* Run your own sequence (with online optimization):
+* Run your own sequence (reflection removal):
 ``` bash
 CUDA_VISIBLEDEVICES=0 python3 run_reflection.py
 ```
