@@ -8,7 +8,7 @@ We present a learning-based approach for removing unwanted obstructions, such as
 
 Paper
 
-<a href="https://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval_/ObstructionRemoval.pdf" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
+<a href="https://arxiv.org/abs/2004.01180" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
 
 ## Overview
 This is the author's reference implementation of the multi-image reflection removal using TensorFlow described in:
