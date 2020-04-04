@@ -30,7 +30,6 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
     * [ckpt](https://drive.google.com/open?id=1OUjr1Cj-nHOUEONoqIMnQIL9qTElpE6r)
 
 ## Data Preparation
-* [Deep Voxel Flow (DVF)](https://github.com/liuziwei7/voxel-flow)
 
 ## Usage
 * Run your own sequence (reflection removal):
