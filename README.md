@@ -20,7 +20,9 @@ Should you be making use of our work, please cite our paper [1].
 Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw/~yulunliu/).
 
 ## Requirements setup
-* [TensorFlow](https://www.tensorflow.org/)
+* [TensorFlow](https://www.tensorflow.org/):
+
+    * tested using TensorFlow 1.10.0
 
 * [Pre-trained PWC-Net](https://github.com/philferriere/tfoptflow)
     * Please overwrite tfoptflow/model_pwcnet.py using the one in this repository.
