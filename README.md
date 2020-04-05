@@ -25,7 +25,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
     * tested using TensorFlow 1.10.0
 
 * [Pre-trained PWC-Net](https://github.com/philferriere/tfoptflow)
-    * Please overwrite tfoptflow/model_pwcnet.py using the one in this repository.
+    * Please overwrite `tfoptflow/model_pwcnet.py` and `tfoptflow/model_base.py` using the ones in this repository.
 
 * To download the pre-trained models:
 
