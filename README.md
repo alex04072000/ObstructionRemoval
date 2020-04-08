@@ -46,5 +46,5 @@ CUDA_VISIBLEDEVICES=0 python3 test_fence.py
 
 ## Citation
 ```
-[1] Yu-Lun Liu, Wei-Sheng Lai, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin HuangYu-Lun Liu, Wei-Sheng Lai, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin Huang. Learning to See Through Obstructions. Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020
+[1] Yu-Lun Liu, Wei-Sheng Lai, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin Huang. Learning to See Through Obstructions. Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020
 ```
