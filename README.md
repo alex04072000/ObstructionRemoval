@@ -29,7 +29,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 
 * To download the pre-trained models:
 
-    * [ckpt](https://drive.google.com/open?id=1OUjr1Cj-nHOUEONoqIMnQIL9qTElpE6r)
+    * [ckpt](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval_/ckpt.zip)
 
 ## Data Preparation
 
