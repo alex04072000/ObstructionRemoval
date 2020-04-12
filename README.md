@@ -32,6 +32,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
     * [ckpt](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/ObstructionRemoval_/ckpt.zip)
 
 ## Data Preparation
+Please prepare 5 frames and follow the naming rule `XXXXX_I[0-4].png` as shown in `imgs` folder, and change the folder path in `run_reflection.py` or `test_fence.py`.
 
 ## Usage
 * Run your own sequence (reflection removal):
