@@ -1,5 +1,5 @@
 ## Important update (2020/07/18)
-The original webpage will not be accessible from 7/7 to 7/25. The temporary links to the webpage is below:
+The original webpage will not be accessible from 7/7 to 7/25. The temporary link to the webpage is below:
 
 [Webpage](https://alex04072000.github.io/ObstructionRemoval/)
 
