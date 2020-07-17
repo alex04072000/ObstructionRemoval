@@ -1,0 +1,238 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+html{
+ }
+body{
+    font-family: Palatino Linotype, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 13pt;
+}
+
+.icon-block {
+  padding: 0px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.author{
+    font-size: 14pt;
+}
+.affiliation{
+    font-size: 12pt;
+}
+.affiliation-row{
+  margin-top: -50px;
+}
+
+.title{
+    font-size: 20pt;
+    font-weight: bold;
+}
+.subtitle{
+    font-size: 14pt;
+    font-style: italic;
+    font-weight: bold;
+}
+
+pre{
+    font-size: 12pt;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+
+
+.nav-item{
+    font-size: 12pt !important;
+}
+
+.navbar-fixed { background-color: rgba(45,45,45,0.5);transition: background-color 2s ease 0s;}
+.navbar-fixed.opaque { background-color: rgba(45,45,45,0.5);transition: background-color 2s ease 0s; }
+
+
+.fa-folder-open{
+  color: #f4d275;
+}
+
+.footer-copyright{
+  background-color: #e0e0e0 !important;
+}
+
+.centered-text{
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.caption{
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.method-tag{
+    font-size: 12pt;
+    width: 6%;
+    color: #224B8D;
+}
+
+.method-tag:hover{
+    /*font-weight: bold;*/
+    color: red;
+    cursor: pointer;
+}
+
+.img_selector{
+    text-align: center;
+}
+
+.demo-img{
+    min-height: 450px !important;
+    /*max-height: 800px !important;*/
+}
+
+.note{
+    font-size: 12pt;
+    /*font-weight: bold;*/
+}
+
+.emphasis{
+    font-size: 13pt;
+    font-weight: bold;
+    color: red;
+}
+
+a  {
+  color: #002db3;
+  -o-transition:0.3s;
+  -ms-transition:0.3s;
+  -moz-transition:0.3s;
+  -webkit-transition:0.3s;
+  transition:0.3s;
+}
+a:hover:not(.summary):hover{
+  color: #3BB9FF;
+  -o-transition:0.3s;
+  -ms-transition:0.3s;
+  -moz-transition:0.3s;
+  -webkit-transition:0.3s;
+  transition:0.3s;
+}
+
+.summary-transfer {
+  background: url('../input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-transfer:hover {
+  background-image: url('../output.jpg');
+}
+
+.summary-obstruction {
+  background: url('../input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-obstruction:hover {
+  background-image: url('../output.jpg');
+}
+
+.summary-enhancement {
+  background: url('../images/summary_enhancement_input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-enhancement:hover {
+  background-image: url('../images/summary_enhancement_output.jpg');
+}
+
+
+.summary-colorization {
+  background: url('../images/summary_colorization_input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-colorization:hover {
+  background-image: url('../images/summary_colorization_output.jpg');
+}
+
+
+.summary-intrinsic {
+  background: url('../images/summary_intrinsic_input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-intrinsic:hover {
+  background-image: url('../images/summary_intrinsic_output.jpg');
+}
+
+
+.summary-cyclegan {
+  background: url('../images/summary_cyclegan_input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-cyclegan:hover {
+  background-image: url('../images/summary_cyclegan_output.jpg');
+}
+
+
+
+.summary-others {
+  background: url('../images/summary_others_input.jpg') center center no-repeat;
+  background-size: contain;
+
+  height: 400px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.summary-others:hover {
+  background-image: url('../images/summary_others_output.jpg');
+}

@@ -1,125 +1,275 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Learning to See Through Obstructions - Supplementary Material</title>
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
-<style type="text/css">
-	l, body, #wrapper
-	{
-		background-color: #ffffff;
-		color: #000000;
-		font-family: Arial, Helvetica, sans-serif;
-		text-align: center;
-		margin: 0;
-		padding: 0;
-	}
-	
-	<!-- body { -->
-		<!-- background-image: url("bg.png"); -->
-	<!-- } -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="author" content="yulunliu">
+  <title>Learning to See Through Obstructions</title>
 
-	img
-	{
-		border: 0;
-	}
-	
-	td
-	{
-		text-align: center;
-		<!-- font-variant: small-caps; -->
-		padding: 5px;
-	}
-	
-	.section
-	{
-		font-size: 40px;
-		font-weight: bold;
-		text-align: center;
-		margin-top: 10px;
-	}
-	
-	.subsection
-	{
-		font-size: 28px;
-		font-weight: bold;
-		text-align: center;
-		margin-top: 20px;
-	}
-	
-	.subsubsection
-	{
-		font-size: 20px;
-		font-weight: bold;
-		text-align: center;
-		margin-top: 20px;
-	}
-	
-	.navselected
-	{
-		color: #ff0000;
-		text-decoration: underline;
-		cursor: pointer;
-	}
-	
-	.navunselected
-	{
-		color: #4488ff;
-		text-decoration: underline;
-		cursor: pointer;
-	}
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="website/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="website/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="website/css/font-awesome.min.css" rel="stylesheet">
 
-	a:link {color: #4488ff; text-decoration: underline; }
-	a:active {color: #4488ff; text-decoration: underline; }
-	a:visited {color: #4488ff; text-decoration: underline; }
-	a:hover {color: #ff0000; text-decoration: none; }
-</style>
+  <!--<meta property="og:image" content="http://gph.is/2oZQz8h" />-->
 </head>
 <body>
+  
+  <div class="navbar-fixed">
 
-<center>
+    <nav class="grey darken-4" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"></a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+          <li><a class="nav-item waves-effect waves-light" href="#home">Home</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#abstract">Abstract</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#paper">Paper</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#download">Download</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#results">Results</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#reference">References</a></li>
+        </ul>
+
+        
+      </div>
+    </nav>
+
+  </div>
 
 
 
 
-<br>
 
-<div class="section">Learning to See Through Obstructions</div>
-<div class="subsubsection">Supplementary Material</div>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container scrollspy" id="home">
 
-<table>
-<tr>
-	<br>
-	<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/">Yu-Lun Liu</a><SUP>1,5</SUP> &nbsp;&nbsp;&nbsp;
-	<a href="https://www.wslai.net/">Wei-Sheng Lai</a><SUP>2</SUP> &nbsp;&nbsp;&nbsp;
-	<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><SUP>2,4</SUP> &nbsp;&nbsp;&nbsp;
-	<a href="https://www.csie.ntu.edu.tw/~cyy/">Yung-Yu Chuang</a><SUP>1</SUP> &nbsp;&nbsp;&nbsp;
-	<a href="https://filebox.ece.vt.edu/~jbhuang/">Jia-Bin Huang</a><SUP>3</SUP> &nbsp;&nbsp;&nbsp;
-	<br>
-	<SUP>1</SUP><a href="https://www.ntu.edu.tw/">National Taiwan University</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<SUP>2</SUP><a href="https://about.google/">Google</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<SUP>3</SUP><a href="https://vt.edu/">Virginia Tech</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<SUP>4</SUP><a href="https://www.ucmerced.edu/">University of California at Merced</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<SUP>5</SUP><a href="https://www.mediatek.tw/">MediaTek Inc.</a>&nbsp;&nbsp;&nbsp;&nbsp;
-</tr>
-</table>
+      <h4 class="header center black-text">Learning to See Through Obstructions</h4>
 
-<br>
+      <br>
 
-<br>
-<br>
-<div class="subsection">Additional Comparisons</div>
+      <div class="row center">
+        <h5 class="header col offset-l1 l2 m4 s12">
+          <div class="author"><a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/" target="blank">Yu-Lun Liu<sup>1,5</sup></a></div>
+        </h5>
 
-<table style="margin-top: 20px;">
-<tr>
-	<td><a href="Obstruction_HTML_CameraReady/pages/reflection.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="teasers/00002.jpg" height="180" width="320"><br>Reflection Removal</div></a></td>
-	<td><a href="Obstruction_HTML_CameraReady/pages/fence.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="teasers/00003.jpg" height="180" width="320"><br>Obstruction Removal</div></a></td>
-	<td><a href="Obstruction_HTML_CameraReady/pages/video.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="teasers/00003R.jpg" height="180" width="320"><br>Video Reflection Removal</div></a></td>
-</tr>
-<!-- <tr> -->
-	<!-- <td><a href="pages/gallery.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="thumbs/gallery.jpg"><br>Gallery</div></a></td> -->
-	<!-- <td><a href="pages/table.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="thumbs/table.jpg"><br>Table</div></a></td> -->
-	<!-- <td><a href="pages/car.html"><div class="navunselected" onmouseover="this.className='navselected';" onmouseout="this.className='navunselected';"><img src="thumbs/car.jpg"><br>Car</div></a></td> -->
-<!-- </tr> -->
-</table>
+        <h5 class="header col l2 m4 s12">
+          <div class="author"><a href="https://www.wslai.net/" target="blank">Wei-Sheng Lai<sup>2</sup></a></div>
+        </h5>
+		
+        <h5 class="header col l2 m4 s12">
+          <div class="author"><a href="https://faculty.ucmerced.edu/mhyang/" target="blank">Ming-Hsuan Yang<sup>2,4</sup></a></div>
+        </h5>
 
-</body>
+        <h5 class="header col l2 m4 s12">
+          <div class="author"><a href="https://www.csie.ntu.edu.tw/~cyy/" target="blank">Yung-Yu Chuang<sup>1</sup></a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="author"><a href="https://filebox.ece.vt.edu/~jbhuang/" target="blank">Jia-Bin Huang<sup>3</sup></a></div>
+        </h5>
+        
+      </div>
+
+      <div class="row center testA">
+        <h5 class="header col offset-l1 l2 m4 s12">
+          <div class="affiliation"><a href="https://www.ntu.edu.tw/" target="blank"><sup>1</sup>National Taiwan University</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://ai.google/research" target="blank"><sup>2</sup>Google</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://vt.edu/" target="blank"><sup>3</sup>Virginia Tech</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://www.ucmerced.edu/" target="blank"><sup>4</sup>University of California at Merced</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://www.mediatek.tw/" target="blank"><sup>5</sup>MediaTek Inc.</a></div>
+        </h5>
+        
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row center">
+        <div class="col l12 m12 s12">
+          <img class="responsive-img" src="website/teaser.png">
+        </div>
+        
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="row section scrollspy" id="abstract">
+      <div class="title">Abstract</div>
+We present a learning-based approach for removing unwanted obstructions, such as window reflections, fence occlusions or raindrops, from a short sequence of images captured by a moving camera. 
+Our method leverages the motion differences between the background and the obstructing elements to recover both layers. 
+Specifically, we alternate between estimating dense optical flow fields of the two layers and reconstructing each layer from the flowwarped images via a deep convolutional neural network.
+The learning-based layer reconstruction allows us to accommodate potential errors in the flow estimation and brittle assumptions such as brightness consistency. 
+We show that training on synthetically generated data transfers well to real images. 
+Our results on numerous challenging scenarios of reflection and fence removal demonstrate the effectiveness of the proposed method.
+    </div>
+
+    
+    <div class="row section scrollspy" id="paper">
+      <div class="title">Papers</div>
+      <br>
+
+      <div class="row">
+      
+        <div class="col m6 s12 center">
+          <a href="https://arxiv.org/abs/2004.01180" target="_blank">
+            <img src="website/images/icon_pdf.png">
+          </a>
+          <br>
+          <a href="https://arxiv.org/abs/2004.01180" target="_blank">CVPR 2020 (arXiv)</a>
+        </div>
+
+        <div class="col m6 s12 center">
+          <a href="website/ObstructionRemoval-supp.pdf" target="_blank">
+            <img src="website/images/icon_pdf.png">
+          </a>
+          <br>
+          <a href="website/ObstructionRemoval-supp.pdf" target="_blank">Supplementary Material</a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="subtitle">Citation</div>
+      <p>Yu-Lun Liu, Wei-Sheng Lai, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin Huang, "Learning to See Through Obstructions", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020</p>
+
+      <br>
+
+      <div class="subtitle">Bibtex</div>
+      <pre>
+@inproceedings{Liu-CVPR-2020,
+    author    = {Liu, Yu-Lun and Lai, Wei-Sheng and Yang, Ming-Hsuan and Chuang, Yung-Yu and Huang, Jia-Bin}, 
+    title     = {Learning to See Through Obstructions}, 
+    booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},
+    year      = {2020}
+}
+</pre>
+    </div>
+
+
+
+    <div class="section row scrollspy" id="download">
+      <div class="title">Download</div>
+      <div class="row">
+
+        <div class="col m6 s12 center">
+          <a href="https://github.com/alex04072000/ObstructionRemoval" target="_blank">
+            <img src="website/images/github.png">
+          </a>
+          <br>
+          <a href="https://github.com/alex04072000/ObstructionRemoval" target="_blank">Code</a>
+        </div>
+
+        <div class="col m6 s12 center">
+          <a href="website/CVPR2020_full_results.zip" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="website/CVPR2020_full_results.zip" target="_blank">Results</a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section row scrollspy" id="results">
+      <div class="title">Results</div>
+      
+      <div class="row center">
+        <div class="subtitle"><a href="website/Obstruction_HTML_CameraReady/result.html">Additional Comparisons</a></div>
+        <a class="summary" href="website/Obstruction_HTML_CameraReady/result.html"><div class="col s12 summary-obstruction"></div></a>
+      </div>
+
+      <br>
+
+
+    </div>
+
+
+    <div class="row section scrollspy" id="reference">
+      <div class="title">References</div>
+      <ul>
+        <li>&bull; 
+          <a href="https://arxiv.org/abs/1812.01461" target="blank">The visual centrifuge: Model-free layered video representations</a>, CVPR, 2019.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://arxiv.org/abs/1806.10781" target="blank">Accurate and efficient video de-fencing using convolutional neural networks and temporal information</a>, ICME, 2018.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://arxiv.org/abs/1708.03474" target="blank">A generic deep architecture for single image reflection removal and image smoothing</a>, ICCV, 2017.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://zpascal.net/cvpr2014/Guo_Robust_Separation_of_2014_CVPR_paper.pdf" target="blank">Robust separation of reflection from multiple images</a>, CVPR, 2014.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://ieeexplore.ieee.org/document/6751413" target="blank">Exploiting reflection change for automatic reflection removal</a>, ICCV, 2013.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://people.csail.mit.edu/changil/assets/video-reflection-removal-through-spatio-temporal-optimization-iccv-2017-nandoriya-et-al.pdf" target="blank">Video reflection removal through spatio-temporal optimization</a>, ICCV, 2017.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://sites.google.com/site/obstructionfreephotography/" target="blank">A Computational Approach for Obstruction-Free Photography</a>, SIGGRAPH, 2015.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://eccv2018.org/openaccess/content_ECCV_2018/papers/Jie_Yang_Seeing_Deeply_and_ECCV_2018_paper.pdf" target="blank">A deep learning approach for single image reflection removal</a>, ECCV, 2018.
+        </li>
+        
+        <li>&bull; 
+          <a href="https://arxiv.org/abs/1806.05376" target="blank">Single image reflection separation with perceptual losses</a>, CVPR, 2018.
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="page-footer grey lighten-3">
+      <!--
+      <div class="row">
+        <div class="col l4 offset-l4 s12">
+          <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=330&t=tt&d=fhGpuMgoLYXytRWhcIV-396rCSmJYtpAJdk3tTNbAnY"></script>
+        </div>
+      </div>
+    -->
+    
+    <div class="footer-copyright center black-text">
+      Copyright © Jason Lai 2017
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
 </html>
