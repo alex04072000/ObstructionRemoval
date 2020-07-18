@@ -1,7 +1,9 @@
 ## Important update (2020/07/18)
-The original webpage will not be accessible from 7/7 to 7/25. The temporary link to the webpage is below:
+The original webpage will not be accessible from 7/7 to 7/25. The temporary link to the webpage and pre-trained weights are below:
 
 [Webpage](https://alex04072000.github.io/ObstructionRemoval/)
+
+[ckpt](https://drive.google.com/file/d/1OUjr1Cj-nHOUEONoqIMnQIL9qTElpE6r/view?usp=sharing)
 
 Sorry for the inconvenience.
 
